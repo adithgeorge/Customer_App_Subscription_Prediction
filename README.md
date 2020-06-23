@@ -1,6 +1,6 @@
 # Customer_App_Subscription_Prediction
 
-**Still working on this by improving the result, insights and further deployment.**
+**Still working on this by improving the result, insights and further deployment. Do read this file and check the conclusion to get an  accurate idea on my project and what are its limitations.**
 
 ## Introduction
 
@@ -73,12 +73,74 @@ The job of the scientist is to find or predict new customer who is interested to
 
 * The most interesting remark from the graph is that 'used_premium_feature' is negatively correlated with enrolled. Users who used the premium feature are convinced that the product isn't worth the price.
 
+### Feature Engineering
+
 * **Understanding the time taken by user to subscribe:** We need to measure the difference between 'first_open' and 'enrolled_date', and save it in a new column. We notice that most of the users enroll within the first 20 to 30 hours. We can infer that 50 hours is a good cut-off time to test the response of the users. So every user that enrolled after 50 hours can be considered as Non-enrolled for checking the accurate response of the users.
 
 * **Analysing the screen list features and getting insights from the number and type of windows/ screens used.**
 * The saving columns are highly correlated, so we need to delete them. But before so we need to create a SavingsCount feature. The same for Credit, CreditCards, and Loan.
 
+### Data Preprocessing
 
+* We will be converting the 'age' data into age groups to get more accuracy and also convert the categorical variables into dummy variables. The model will be 
+* **Due to computational limitations, further model building was done on a part of the data only.** 
+* We can see that the target columns is not imbalanced and therefore we can proceed with this small dataset for model building.
+* Feature scaling may not be necessary as almost all the values are either 1 or 0.
+* Note: There was no big difference in the accuracy after feature scaling.
 
+## Model Building
+
+We have gained some insights from the EDA part. But with that, we cannot accurately predict or tell whether a user will opt for the premium version or not. So now we will predict that using some great Classification Algorithms. Following are the algorithms I will use to make the model:
+
+* Logistic Regression
+
+* Support Vector Machines(Linear)
+
+* Random Forest
+
+* K-Nearest Neighbours
+
+* Naive Bayes
+
+* Decision Tree
+
+The accuracy of a model is not the only factor that determines the robustness of the classifier. As the training and testing data changes, the accuracy will also change. It may increase or decrease. This is known as model variance.
+
+To overcome this and get a generalized model,we use Cross Validation.
+
+Many a times, the data is imbalanced, i.e there may be a high number of one specific class instances but less number of other class instances. Thus we should train and test our algorithm on each and every instance of the dataset. Then we can take an average of all the noted accuracies over the dataset.
+
+An algorithm may underfit over a dataset for some training data and sometimes also overfit the data for other training set. Thus with cross-validation, we can achieve a generalised model and we can predict the average accuracy for the model when data is provided.
+
+**As we can see the best performing algorithms are SVM (linear), Random Forest Classifer, Logistic Regression.**
+
+### Cross Validation
+
+Here, we can see that the Linear SVM, Logistic Regression and Random Forest are all performing well enough after cross validation and their variance is also low. So, we can be confident that we can get a generalised model and a consistent accuracy for different data.
+
+### Hyperparameter Tuning
+
+Hyper Parameter Tuning can be done to change the learning rate of the algorithm and get a better model.
+
+After this process we can conclude that almost all the algorithms are giving a good enough accuracy and also has a similar clasification report, therefore we can fix on one model and take the Random Forest Classifer model as the best possible one.
+
+### Confusion Matrix
+
+Here we can infer the following from the confusion matrix:
+
+* 0 - Not enrolled, 1 - Enrolled
+* We have the actual classes on the y-axis and the predicted classes on the x-axis.
+* The model is able to dstinguish between the both classes,but still there is some error.
+* 485 samples were actually positive but were predicted as negative - False Negative
+* 311 samples were actually negative but were predicted as positive - False Positive.
+* There is margin for improvement of the model.
+
+* The feature importances were also calculated
+
+# Conclusion
+
+* Our efforts have given us a model that will label every new user as "highly likely" (or "unlikely") to subscribe. We can further validate our results by running our predictions on daily new installs, and see whether our accuracy is consistent. From there, we can narrow our marketing efforts only to those users "unlikely" to subscribe, and thus increase our subscription rate.
+
+* The increase in overall subscriptions can measure the benefits of this model to the company. Recall that those already likely to subscribe will do so, and although we can still give them offers, we don't have to go all out. On the other hand, users who are likely to leave may convert to paid subscribers if we give them an offer they cannot refuse. For example, these offers can come in the form of "1st month free", or "50% off yearly subscriptions". The latter shows that great offers can still be structured in a way that brings overall benefits to the company because we are locking the user in for an extended period. This is a model of SaaS services provided through the app.
 
 
