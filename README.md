@@ -106,7 +106,7 @@ We have gained some insights from the EDA part. But with that, we cannot accurat
 
 The accuracy of a model is not the only factor that determines the robustness of the classifier. As the training and testing data changes, the accuracy will also change. It may increase or decrease. This is known as model variance.
 
-To overcome this and get a generalized model,we use Cross Validation.
+To overcome this and get a generalized model, we use Cross Validation.
 
 Many a times, the data is imbalanced, i.e there may be a high number of one specific class instances but less number of other class instances. Thus we should train and test our algorithm on each and every instance of the dataset. Then we can take an average of all the noted accuracies over the dataset.
 
@@ -122,7 +122,7 @@ Here, we can see that the Linear SVM, Logistic Regression and Random Forest are 
 
 Hyper Parameter Tuning can be done to change the learning rate of the algorithm and get a better model.
 
-After this process we can conclude that almost all the algorithms are giving a good enough accuracy and also has a similar clasification report, therefore we can fix on one model and take the Random Forest Classifer model as the best possible one.
+**After this process we can conclude that almost all the algorithms are giving a good enough accuracy and also has a similar clasification report, therefore we can fix on one model and take the Random Forest Classifer model as the best possible one.**
 
 ### Confusion Matrix
 
